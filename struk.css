@@ -1,0 +1,58 @@
+body{
+    font-family: monospace;
+    background: white;
+    margin: 0;
+    padding: 0;
+}
+
+.wrapper{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.struk{
+    width: 280px;
+}
+
+.header{
+    text-align: center;
+    font-size: 14px;
+}
+
+.footer{
+    text-align: center;
+    font-size: 13px;
+}
+
+table{
+    width: 100%;
+    font-size: 12px;
+    border-collapse: collapse;
+}
+
+td{
+    padding: 2px;
+}
+
+hr{
+    border: 0;
+    border-top: 1px dashed black;
+    margin: 5px 0;
+}
+
+@media print{
+    body{
+        margin: 0;
+        padding: 0;
+    }
+
+    .wrapper{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+    .struk{
+        width: 280px;
+    }
+}
