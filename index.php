@@ -1,39 +1,38 @@
 <?php
 session_start();
 
-if(isset($_SESSION['login'])){
-    header("Location: index.php");
+if(!isset($_SESSION['role']) || $_SESSION['role']!='admin'){
+    header("Location: ../index.php");
     exit;
 }
-
-header("Expires: Tue, 01 Jan 2000 00:00:00 GMT");
-header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
-header("Pragma: no-cache");
 ?>
-
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Aplikasi Kasir</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Dashboard Admin - Sistem Kasir</title>
+    <link rel="stylesheet" href="../style.css">
 </head>
 <body>
-    <div class="login-container">
-    <div class="login-box">
-        <h2>Sistem Kasir</h2>
-        <p class="subtitle">Silahkan Login</p>
-        <form action="proses_login.php" method="POST">
-            <input type="text" name="username" placeholder="Username" required>
-            <input type="password" name="password" placeholder="Password" required>
-            <select name="role" required>
-                <option value="">PILIH ROLE</option>
-                <option value="admin">Admin</option>
-                <option value="petugas">Petugas</option>
-                <option value="owner">Owner</option>
-            </select>
-            <button type="submit">Login</button>
-        </form>
-    </div>
-</div>
+    <!-- NAVBAR -->
+     <div class="navbar">
+        <div class="nav-left">Sistem Kasir</div>
+
+        <div class="nav-right">
+            <span class="nav-user"><?= $_SESSION['nama']; ?></span>
+            <a class="logout-btn" href="../logout.php">Logout</a>
+        </div>
+     </div>
+
+     <!-- DASHBOARD -->
+      <div class="dashboard-container">
+        <h2 class="dashboard-title">Dashboard Admin</h2>
+
+        <div class="menu-grid">
+            <a href="../tambah_barang.php" class="menu-box">Tambah Barang</a>
+            <a href="../tampil_barang.php" class="menu-box">Lihat Stok</a>
+            <a href="../transaksi.php" class="menu-box">Transaksi</a>
+            <a href="../laporan_bulanan.php" class="menu-box">Data Penjualan</a>
+        </div>
+      </div>
 </body>
 </html>
